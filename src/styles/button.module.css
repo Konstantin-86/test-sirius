@@ -1,0 +1,32 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.default {
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+}
+
+.default:hover {
+  background-color: #2563eb;
+}
+
+.default:active {
+  background-color: #1d4ed8;
+}
+
+.disabled {
+  background-color: #d1d5db;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.icon {
+  margin-left: 0.5rem;
+}
