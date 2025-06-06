@@ -1,32 +1,63 @@
 .button {
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 0.25rem;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.default {
-  background-color: #3b82f6;
-  color: white;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  padding: 10px 24px 10px 24px;
+  border-radius: 100px;
+  border: none;
+  transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
-
-.default:hover {
-  background-color: #2563eb;
+.primary {
+  color: var(--ColorTextLight);
+  background-color: var(--ColorBgButtonPrimary);
 }
-
-.default:active {
-  background-color: #1d4ed8;
+.primary:hover {
+  background-color: var(--ColorBgButtonPrimary-hover);
 }
-
+.secondary {
+  color: var(--ColorTextDark);
+  background-color: var(--ColorBgButtonSecondary);
+}
+.secondary:hover {
+  background-color: var(--ColorBgButtonSecondary-hover);
+}
 .disabled {
-  background-color: #d1d5db;
-  color: #6b7280;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 24px 10px 24px;
+  border-radius: 100px;
+  color: var(--ColorTextDisabled);
+  background-color: var(--ColorBgButtonDisabled);
+  border: none;
   cursor: not-allowed;
 }
-
-.icon {
-  margin-left: 0.5rem;
+.text {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.iconLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  left: -16px;
+}
+.iconRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%) scaleX(-1);
+  right: -16px;
 }

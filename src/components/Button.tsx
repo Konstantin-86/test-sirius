@@ -3,16 +3,20 @@ import styles from "../styles/button.module.css";
 
 type ButtonProps = {
   state?: "default" | "disabled";
+  accent?: "primary" | "secondary";
   text: string;
-  icon?: React.ReactNode;
+  icon?: string;
+  iconDerection?: "left" | "right";
   onClick?: () => void;
   className?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
   state = "default",
+  accent = "primary",
   text,
   icon,
+  iconDerection = "left",
   onClick,
   className = "",
 }) => {
@@ -24,16 +28,36 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
+  const baseClasses = [styles.button, className].join(" ");
+
+  const stateClasses = [
+    isDisabled
+      ? styles.disabled
+      : accent === "primary"
+      ? styles.primary
+      : styles.secondary,
+  ].join(" ");
+
+  const buttonClassName = `${baseClasses} ${stateClasses}`;
+
   return (
     <button
       disabled={isDisabled}
       onClick={handleClick}
-      className={
-        isDisabled ? styles.disabled : `${styles.default} ${className}`
-      }
+      className={buttonClassName}
     >
-      <span>{text}</span>
-      {icon && <span className={styles.icon}>{icon}</span>}
+      <p className={styles.text}>
+        {text}
+        {icon && (
+          <img
+            src={icon}
+            alt="icon"
+            className={
+              iconDerection === "left" ? styles.iconLeft : styles.iconRight
+            }
+          />
+        )}
+      </p>
     </button>
   );
 };

@@ -1,12 +1,19 @@
 :root {
-  --mainBgColor: #e1f8e9;
-}
+  --ColorTextLight: rgb(255, 255, 255);
+  --ColorTextDark: rgb(41, 50, 68);
+  --ColorTextDisabled: rgba(68, 83, 113, 0.5);
 
+  --ColorBgButtonPrimary: rgb(69, 165, 246);
+  --ColorBgButtonPrimary-hover: rgb(0, 126, 229);
+  --ColorBgButtonSecondary: rgb(218, 237, 253);
+  --ColorBgButtonSecondary-hover: rgb(181, 219, 251);
+  --ColorBgButtonDisabled: rgba(68, 83, 113, 0.1);
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 body {
-  background-color: var(--mainBgColor);
+  /* background-color: var(--mainBgColor); */
 }

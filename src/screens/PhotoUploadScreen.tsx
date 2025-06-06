@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 import Button from "../components/Button";
+import arrow from "../../assets/arrowLeft.png";
 
 interface PhotoUploadScreenProps {
   onStart: () => void;
@@ -90,7 +91,14 @@ const PhotoUploadScreen = ({ onStart }: PhotoUploadScreenProps) => {
         </div>
       )}
 
-      <Button state="disabled" text="Далее" onClick={onStart} />
+      <Button
+        state="default"
+        accent="secondary"
+        icon={arrow}
+        iconDerection="right"
+        text="Далее"
+        onClick={onStart}
+      />
     </div>
   );
 };
