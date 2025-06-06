@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import RadioButton from "../components/RadioButton";
 import TextField from "../components/TextField";
+import Button from "../components/Button";
+import arrow from "../assets/arrowLeft.png";
+import arrow2 from "../assets/arrow2Forward.png";
 
 interface QuestionsScreenProps {
-  onStart: () => void;
+  onStart: (newScreen: string) => void;
 }
 interface Answer {
   questionTitle: string;
@@ -14,18 +17,25 @@ interface Section {
   title: string;
   questions: Answer[];
 }
+interface TextFieldData {
+  title: string;
+}
 
 const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
   const [selectedValues, setSelectedValues] = useState<
     Record<string, string | null>
   >({});
+  const [stateButton, setStateButton] = useState(false);
   const [fakeData, setFakeData] = useState<Section[]>([]);
+  const [textFieldData, setTextFieldData] = useState<TextFieldData[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await import("../../data/mok.json");
-        setFakeData(response.default);
+        const responseRadioText = await import("../../data/mok.json");
+        const responseTextField = await import("../../data/textFiled.json");
+        setFakeData(responseRadioText.default);
+        setTextFieldData(responseTextField.default);
       } catch (err) {
         console.log(err);
       }
@@ -33,7 +43,6 @@ const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
 
     fetchData();
   }, []);
-  console.log(fakeData);
 
   const handleRadioChange = (name: string, value: string | null) => {
     setSelectedValues((prev) => ({
@@ -41,10 +50,35 @@ const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
       [name]: value,
     }));
   };
-  console.log(selectedValues);
+  const checkInputs = () => {
+    console.log(selectedValues);
+    onStart("result");
+  };
 
   return (
     <div>
+      <h2>Общая информация о ребенке</h2>
+      <label htmlFor="">
+        Имя ребенка <input type="text" />
+      </label>
+
+      <label htmlFor="">
+        Дата рождения <input type="date" />
+      </label>
+      <div className="">
+        <label>
+          Пол ребенка
+          <RadioButton
+            name="Пол ребенка"
+            options={["Мужской", "Женский"]}
+            onChange={(value) => handleRadioChange("Пол ребенка", value)}
+          />
+        </label>
+      </div>
+      <label htmlFor="">
+        Имя родителя, заполняющего анкету <input type="text" />
+      </label>
+
       {fakeData.map((item) => {
         return (
           <div key={item.title}>
@@ -64,14 +98,30 @@ const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
           </div>
         );
       })}
-      <TextField
-        initialValue="Есть ли у Вашего ребенка какие-либо особенности развития или поведения, о которых Вы хотели бы сообщить дополнительно?"
-        onChange={(value) =>
-          handleRadioChange(
-            "Есть ли у Вашего ребенка какие-либо особенности развития или поведения, о которых Вы хотели бы сообщить дополнительно?",
-            value
-          )
-        }
+      {textFieldData.map((item) => {
+        return (
+          <div key={item.title}>
+            <TextField
+              initialValue={item.title}
+              onChange={(value) => handleRadioChange(item.title, value)}
+            />
+          </div>
+        );
+      })}
+      <Button
+        text="К загрузке рисунков"
+        accent="secondary"
+        iconDerection="left"
+        icon={arrow}
+        onClick={() => onStart("upload")}
+      />
+      <Button
+        text="К загрузке рисунков"
+        accent="primary"
+        state={stateButton ? "disabled" : "default"}
+        iconDerection="right"
+        icon={arrow2}
+        onClick={checkInputs}
       />
     </div>
   );

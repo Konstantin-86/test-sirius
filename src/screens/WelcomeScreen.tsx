@@ -1,14 +1,14 @@
 import styles from "../styles/welcomeScreen.module.css";
 
 interface WelcomeScreenProps {
-  onStart: () => void;
+  onStart: (newScreen: string) => void;
 }
 
 const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   return (
     <div className={styles.container}>
       <h1>Test Sirius</h1>
-      <button onClick={onStart}>Start</button>
+      <button onClick={() => onStart("upload")}>Start</button>
     </div>
   );
 };

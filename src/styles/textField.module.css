@@ -1,5 +1,29 @@
+.container {
+  margin-bottom: 16px;
+}
+.label {
+  display: block;
+  color: rgb(41, 50, 68);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 135%;
+  margin-bottom: 4px;
+}
 
-
-
-
-
+.input {
+  width: 100%;
+  padding: 10px 12px 10px 12px;
+  color: rgb(41, 50, 68);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  margin-bottom: 32px;
+  border-radius: 6px;
+  border: 1px solid rgb(160, 169, 184);
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+.input:focus,
+input:active {
+  border: 1px solid rgb(100, 71, 207);
+}
