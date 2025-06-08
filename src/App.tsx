@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="container">
-      {<ProgressBar currentScreen={currentScreen} />}
+      <ProgressBar currentScreen={currentScreen} />
       {currentScreen === "welcome" && <WelcomeScreen onStart={onStart} />}
 
       {currentScreen === "upload" && <PhotoUploadScreen onStart={onStart} />}
