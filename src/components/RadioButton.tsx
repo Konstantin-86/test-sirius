@@ -1,22 +1,20 @@
-import { useState } from "react";
 import styles from "../styles/radioButton.module.css";
 
 interface RadioButtonProps {
   options: string[];
   name: string;
+  selectedValue: string | null;
   onChange: (selectedValue: string | null) => void;
 }
 
 const RadioButton: React.FC<RadioButtonProps> = ({
   options,
   name,
+  selectedValue,
   onChange,
 }) => {
-  const [selectedValue, setSelectedValue] = useState<string | null>(null);
-
   const handleChange = (value: string) => {
     const newValue = selectedValue === value ? null : value;
-    setSelectedValue(newValue);
     onChange(newValue);
   };
 
@@ -35,7 +33,7 @@ const RadioButton: React.FC<RadioButtonProps> = ({
             value={option}
             checked={selectedValue === option}
             onChange={() => handleChange(option)}
-            style={{ display: "none" }}
+            className={styles.input}
           />
           {option}
         </label>

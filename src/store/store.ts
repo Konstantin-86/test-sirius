@@ -1,10 +1,14 @@
-// store.ts
+
 import { configureStore } from "@reduxjs/toolkit";
-import taskReducer from "./taskSlice";
+import taskIdSlice from "./taskIdSlice";
+import fileSlice from "./fileSlice";
+import questionsReducer from './questionsSlice';
 
 export const store = configureStore({
   reducer: {
-    task: taskReducer,
+    task: taskIdSlice,
+    file: fileSlice,
+    questions: questionsReducer,
   },
 });
 

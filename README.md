@@ -1,54 +1,85 @@
-# React + TypeScript + Vite
+Создайте прототип веб-интерфейса для онлайн-школы, в котором реализуется функционал ИИ-психодиагностики детей. Задача направлена на оценку ваших навыков в вёрстке, работе с компонентами, состоянием и адаптивностью.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1) Реализуйте страницы сайта по Figma-макету:
+https://www.figma.com/design/N0OmXqflTC6blymmTCPm4Q/AI-test-landing?m=auto&t=8w5f8RToA94TwFEz-1
+2) Описание задачи:
+Вы реализуете одностраничное приложение (SPA), состоящее из следующих экранов:
+- Экран приветствия — название теста, кнопка “Начать тест”.
+- Экран загрузки фотографий — интерфейс, в котором можно загрузить 3 фотографии, когда все фото загружены — кнопка “Отправить” активируется, после отправки открывается экран вопросов.
+- Экран вопросов — все вопросы на одном экране, из локального JSON-файла. Типы вопросов:
+- шкала от 1 до 5
+- выбор смайликов (эмодзи)
+- варианты ответов: textfield, datepicker, radiobutton.
+- текстовые вопросы
+- Экран результата — текстовая интерпретация на основе ответов в формате PDF-файла.
 
-Currently, two official plugins are available:
+Ответы можно сохранить в console.log() или отобразить на финальном экране. Визуальный стиль — детский, дружелюбный, опирайтесь на Figma-дизайн. Приветствуется простая адаптивность и внимание к UX.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Важно: создать API-взаимодействие с бэкэндом, ознакомиться можно по ссылке: https://docs.google.com/document/d/1sBXZO9LXpa20HzCEm6oYEkT5vymjdQFpDjOhHUs5u8w/edit?tab=t.0
+3) Обязательные технологии:
+React
+Redux Toolkit
+TypeScript
+4) Как сдавать:
 
-## Expanding the ESLint configuration
+Разместите решение в открытом репозитории на Git-сервере (GitHub, GitLab и т. д.)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Обратите внимание: данный профиль предназначен только для получения финального тестового задания. К сожалению, нет возможности отвечать на вопросы в процессе выполнения.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Срок выполнения задания: 2 календарных дня с момента получения.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Уточнение: задание отправляется всем кандидатам, и возможно, что кто-то выполнит его лучше. Мы гарантируем, что ваша работа нигде не будет использована, если вы не пройдете отбор.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Требования к функционалу
+1. Загрузка изображений
+Описание:
+Создать интерфейс для загрузки трех изображений с фиксированными подписями: "Дом/Дерево/Человек", "Несуществующее животное" и "Автопортрет". В figma пример
+Требования:
+Реализовать три поля ввода (<input type="file">) с соответствующими подписями.
+После выбора изображения показывать его превью (уменьшенное изображение) рядом с полем ввода.
+Кнопка "Отправить фото"/"Далее" изначально неактивна (disabled) и становится активной только после загрузки всех трех изображений.
+При нажатии на кнопку "Отправить фото"/"Далее" отправить изображения на бэкенд.
+При выполнение задачи необходимо ориентироваться на пример в figma
+ API:
+Отправка выполняется на URL: https://sirius-draw-test-94500a1b4a2f.herokuapp.com/upload.
+Использовать объект FormData для передачи файлов.
+После успешной отправки бэкенд возвращает идентификатор задачи (task_id), который нужно сохранить для дальнейшего использования.
+2. Опросник
+Описание:
+Реализовать многосекционный опросник, где каждая секция содержит вопросы с вариантами ответа или текстовыми полями.
+Требования:
+Вопросы с радио-кнопками (например, оценка от 1 до 5).
+Текстовые поля для открытых ответов (где требуется).
+3. Отправка данных опросника
+Описание:
+После заполнения всех секций опросника отправить собранные данные на бэкенд.
+Требования:
+При нажатии на кнопку "Отправить опрос" собрать данные из всех секций (ответы на радио-кнопки и текст из полей).
+Отправить данные в формате JSON на URL: https://sirius-draw-test-94500a1b4a2f.herokuapp.com/submit-survey.
+Включить в запрос task_id, полученный после загрузки изображений.
+Интерфейс:
+После успешной отправки перейти к этапу получения отчета.
+4. Получение отчета
+Описание:
+После отправки опроса периодически проверять статус отчета и предоставить пользователю доступ к готовому PDF.
+Требования:
+Использовать task_id для запроса статуса отчета по URL: https://sirius-draw-test-94500a1b4a2f.herokuapp.com/report/{task_id}.
+Периодически (например, каждые 10-15 секунд) отправлять GET-запрос для проверки статуса.
+Возможные статусы:
+Если отчет еще в обработке: отобразить "Анализ в процессе...".
+Если отчет готов: предоставить две ссылки:
+"Просмотреть отчет" — открыть PDF в новой вкладке.
+"Скачать отчет" — скачать PDF-файл.
+Интерфейс:
+Показывать пользователю актуальный статус обработки.
+5. Интерфейс и стили
+Требования:
+Использовать современный и адаптивный дизайн.
+Обеспечить удобство использования на мобильных устройствах (responsive design).
+Кнопки (активные/неактивные состояния).
+Сообщения о статусе (разные цвета для успеха, ошибки и процесса).
+Поддерживать кроссбраузерную совместимость (Chrome, Firefox, Safari).
+API-взаимодействие:
+Все запросы к бэкенду выполнять асинхронно (с использованием fetch).
+Обрабатывать возможные ошибки (например, 404, 500) и отображать их пользователю в понятной форме.

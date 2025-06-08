@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 125px;
   font-size: 16px;
   font-weight: 400;
   line-height: 135%;
@@ -11,20 +12,25 @@
   transition: all 0.2s ease-in-out;
   cursor: pointer;
 }
+
 .primary {
   color: var(--ColorTextLight);
   background-color: var(--ColorBgButtonPrimary);
 }
+
 .primary:hover {
   background-color: var(--ColorBgButtonPrimary-hover);
 }
+
 .secondary {
   color: var(--ColorTextDark);
   background-color: var(--ColorBgButtonSecondary);
 }
+
 .secondary:hover {
   background-color: var(--ColorBgButtonSecondary-hover);
 }
+
 .disabled {
   display: flex;
   justify-content: center;
@@ -36,11 +42,20 @@
   border: none;
   cursor: not-allowed;
 }
+
 .text {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
+
+.text svg {
+  margin-inline: 8px;
+}
+
 .iconLeft {
   display: flex;
   justify-content: center;
@@ -51,6 +66,7 @@
   transform: translate(0, -50%);
   left: -16px;
 }
+
 .iconRight {
   display: flex;
   justify-content: center;

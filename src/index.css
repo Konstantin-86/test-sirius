@@ -1,4 +1,5 @@
 :root {
+  --ColorMainText: rgb(58, 53, 62);
   --ColorTextLight: rgb(255, 255, 255);
   --ColorTextDark: rgb(41, 50, 68);
   --ColorTextDisabled: rgba(68, 83, 113, 0.5);
@@ -9,11 +10,13 @@
   --ColorBgButtonSecondary-hover: rgb(181, 219, 251);
   --ColorBgButtonDisabled: rgba(68, 83, 113, 0.1);
 }
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
-  /* background-color: var(--mainBgColor); */
+  font-family: 'CirceRounded', sans-serif;
 }

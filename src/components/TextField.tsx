@@ -5,23 +5,31 @@ import style from "../styles/textField.module.css";
 
 interface TextFieldProps {
   initialValue: string;
+  value: string;
   onChange: (value: string) => void;
 }
 
-const TextField: React.FC<TextFieldProps> = ({ initialValue, onChange }) => {
-  const [value, setValue] = useState<string>("");
-
-  const debouncedText = useDebounce(value, 1000);
+const TextField: React.FC<TextFieldProps> = ({
+  initialValue,
+  value: propValue,
+  onChange
+}) => {
+  const [localValue, setLocalValue] = useState<string>(propValue);
+  const debouncedText = useDebounce(localValue, 500);
 
   useEffect(() => {
-    if (debouncedText) {
+    setLocalValue(propValue);
+  }, [propValue]);
+
+  useEffect(() => {
+    if (debouncedText !== propValue) {
       onChange(debouncedText);
     }
   }, [debouncedText]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
-    setValue(newValue);
+    setLocalValue(newValue);
   };
 
   return (
@@ -30,7 +38,7 @@ const TextField: React.FC<TextFieldProps> = ({ initialValue, onChange }) => {
       <input
         className={style.input}
         type="text"
-        value={value}
+        value={localValue}
         onChange={handleChange}
       />
     </div>

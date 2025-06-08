@@ -2,13 +2,26 @@
   display: flex;
   align-content: center;
   gap: 24px;
+  margin-bottom: 32px;
 }
+
 .label {
   display: flex;
   align-items: center;
   gap: 8px;
+  color: var(--ColorTextDark);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 135%;
+  text-align: left;
   cursor: pointer;
 }
+
+.input {
+  width: 0;
+  height: 0;
+}
+
 .selected {
   width: 18px;
   height: 18px;
@@ -16,9 +29,18 @@
   border: 6px solid rgb(69, 165, 246);
   background-color: #fff;
 }
+
 .unselected {
   width: 18px;
   height: 18px;
   border-radius: 50%;
   background-color: rgb(208, 212, 220);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
 }

@@ -1,4 +1,4 @@
-// taskSlice.ts
+
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -10,7 +10,7 @@ const initialState: TaskState = {
   taskId: null,
 };
 
-const taskSlice = createSlice({
+const taskIdSlice = createSlice({
   name: "task",
   initialState,
   reducers: {
@@ -23,5 +23,5 @@ const taskSlice = createSlice({
   },
 });
 
-export const { setTaskId, clearTaskId } = taskSlice.actions;
-export default taskSlice.reducer;
+export const { setTaskId, clearTaskId } = taskIdSlice.actions;
+export default taskIdSlice.reducer;

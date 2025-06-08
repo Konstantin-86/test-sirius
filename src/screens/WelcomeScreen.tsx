@@ -1,3 +1,5 @@
+import ArrowIcon from "../components/ArrowIcon";
+import Button from "../components/Button";
 import styles from "../styles/welcomeScreen.module.css";
 
 interface WelcomeScreenProps {
@@ -6,9 +8,9 @@ interface WelcomeScreenProps {
 
 const WelcomeScreen = ({ onStart }: WelcomeScreenProps) => {
   return (
-    <div className={styles.container}>
+    <div className={styles.inner}>
       <h1>Test Sirius</h1>
-      <button onClick={() => onStart("upload")}>Start</button>
+      <Button text="Start" onClick={() => onStart("upload")} iconDirection="right" icon={<ArrowIcon direction="right" />} />
     </div>
   );
 };

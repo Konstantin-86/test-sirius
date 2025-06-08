@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'CirceRounded-Light';
+    src: url('/public/fonts/CirceRounded-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CirceRounded-Bold';
+    src: url('/public/fonts/CirceRounded-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CirceRounded-Regular';
+    src: url('/public/fonts/CirceRounded-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
