@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "../styles/progressBar.module.css";
+import styles from "../styles/progresBar.module.css";
 
 interface ProgressBarProps {
     currentScreen: string;
