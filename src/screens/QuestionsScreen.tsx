@@ -131,6 +131,7 @@ const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
 
     axios.post(URL, itemsForServer)
       .then((res) => {
+        console.log(res);
         onStart("result");
       })
       .catch((err) => console.log(err));
