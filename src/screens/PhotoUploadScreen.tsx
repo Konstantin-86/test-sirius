@@ -133,6 +133,7 @@ const PhotoUploadScreen = ({ onStart }: PhotoUploadScreenProps) => {
           },
         }
       );
+      console.log(response);
 
       const taskId = response.data.task_id;
       dispatch(setTaskId(taskId));

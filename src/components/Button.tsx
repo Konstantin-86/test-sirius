@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../styles/button.module.css";
-import ArrowIcon from "./ArrowIcon";
 
 type ButtonProps = {
   state?: "default" | "disabled";
@@ -41,8 +40,6 @@ const Button: React.FC<ButtonProps> = ({
 
   const buttonClassName = `${baseClasses} ${stateClasses}`;
 
-  const iconColor = accent === "primary" ? "#FFFFFF" : "#000000";
-
   return (
     <button
       disabled={isDisabled}
@@ -50,9 +47,9 @@ const Button: React.FC<ButtonProps> = ({
       className={buttonClassName}
     >
       <p className={styles.text}>
-        {iconDirection === "left" && (icon || <ArrowIcon color={iconColor} direction="left" size={16} />)}
+        {iconDirection === "left" && icon}
         {text}
-        {iconDirection === "right" && (icon || <ArrowIcon color={iconColor} direction="right" size={16} />)}
+        {iconDirection === "right" && icon}
       </p>
     </button>
   );

@@ -17,6 +17,7 @@ import RadioButton from "../components/RadioButton";
 import TextField from "../components/TextField";
 import ArrowIcon from "../components/ArrowIcon";
 import Button from "../components/Button";
+import DoubleArrowIcon from "../components/DoubleArrowIcon";
 
 import styles from "../styles/questionsScreen.module.css";
 
@@ -46,9 +47,6 @@ const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
   const dispatch = useDispatch();
   const questionsState = useSelector((state: RootState) => state.questions);
   const taskId = useSelector((state: RootState) => state.task.taskId);
-  console.log(taskId);
-
-
   const { childName, childDOB, childGender, parentName, answers } = questionsState;
   const [fakeData, setFakeData] = useState<RadioFieldData[]>([]);
   const [textFieldData, setTextFieldData] = useState<TextFieldData[]>([]);
@@ -227,10 +225,10 @@ const QuestionsScreen = ({ onStart }: QuestionsScreenProps) => {
           />
           <Button
             text="Узнать результаты"
-            accent="secondary"
+            accent="primary"
             state={stateButton ? "default" : "disabled"}
             iconDirection="right"
-            icon={<ArrowIcon direction="right" color={stateButton ? "#293244" : "#C7C7C7"} />}
+            icon={<DoubleArrowIcon direction="right" color={stateButton ? "#445371" : "#ffffff"} />}
             onClick={checkInputs}
           />
         </div>
